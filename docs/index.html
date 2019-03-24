@@ -537,8 +537,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <blockquote>
 <p>Type of advanced regression that uses model data with <b>two</b> possible outcomes.</p>
 </blockquote>
-<p>Logisitc regression models estimates the probability <em><b>p</b></em> of a binary outcome <em><b>y</b></em>.</p>
-<p>Since binary data is 0 and 1, logistic regression uses a function called <em><b>logit</b></em> to transform the binary data into real numbers (that fall on a spectrum from negative to positive infinity), so that you can create a linear equation.</p>
+<p>Logistic regression models estimates the probability <em><b>p</b></em> of a binary outcome <em><b>y</b></em>.</p>
+<p>Since binary data are zeroes and ones, logistic regression uses a function called <em><b>logit</b></em> to transform the binary data into real numbers (that fall on a spectrum from negative to positive infinity), so that you can create a linear equation.</p>
 </section>
 <section id="types-of-acceptable-data" class="slide level2">
 <h2>Types of Acceptable Data</h2>
@@ -575,7 +575,11 @@ Test Version
 <p><b>Variables:</b></p>
 <ul>
 <li>Question: Will making colour change to my website result in more button clicks?</li>
-<li>Hypothesis: By changing the colour to ‘green’ it will result in more button clicks. &gt; - Independent: Button Colour &gt; - Dependent: Whether or not the user clicked the button</li>
+<li>Hypothesis: By changing the colour to ‘green’ it will result in more button clicks.</li>
+</ul>
+<ul>
+<li class="fragment">Independent: Button Colour</li>
+<li class="fragment">Dependent: Whether or not the user clicked the button</li>
 </ul>
 </section>
 <section id="examine-the-dataset" class="slide level2">
@@ -612,7 +616,7 @@ Test Version
 </section>
 <section id="now-its-your-turn-try-this-example" class="slide level2">
 <h2>Now It’s Your Turn! Try This Example</h2>
-<p>You work for the City transit office. The transit office has been compiling data on commuters who use the bus as a means of transportation during the work week. The Transit Office has asked you to determine if the number of days an individual commutes, impacts whether or not they’ll take the bus.</p>
+<p>You work for the City Transit Office. The Transit Office has been compiling data on commuters who use the bus as a means of transportation during the work week. The Transit Office has asked you to determine if the number of days an individual commutes, impacts whether or not they’ll take the bus.</p>
 <ol type="1">
 <li>Download the CSV file “transit.csv”</li>
 <li>Open the file in R. Take a look at the columns using the view() or head() functions.</li>
