@@ -1,0 +1,51 @@
+.reveal {
+  background: #ecf0f1;
+  border-top: 10px solid #d93a2f;
+}
+
+.reveal section h2 {
+  color: #d93a2f;
+  font-weight: bold;
+}
+
+.reveal section p {
+  color: #535353;
+  text-align: left;
+  font-weight: lighter;
+  font-size: 1.5rem;
+}
+
+.reveal section ul {
+  display: block;
+  margin-left: 1.25rem;
+}
+
+.reveal section li {
+  line-height: 1.5;
+  color: #535353;
+  font-size: 1.5rem;
+  text-align: left;
+  font-weight: lighter;
+}
+
+.reveal section img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.title h2 {
+  text-align: left;
+}
+
+.reveal section blockquote {
+  box-shadow: none;
+  text-align: left;
+  width: 90%;
+}
+
+.reveal section blockquote p {
+  border-left: thick solid #535353;
+  padding-left: 10px;
+}

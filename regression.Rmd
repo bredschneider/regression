@@ -1,0 +1,151 @@
+---
+title:
+author: 
+date: 
+output: revealjs::revealjs_presentation
+css: docs/styles.css
+incremental: true
+slideNumber: true
+highlight: pygments
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Advanced Regression Models {data-background="cacti-close-up.jpg" .title}
+Monday, March 25, 2019
+
+## Review: Linear Models
+```{r plot, warning=FALSE}
+library(ggplot2)
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() 
+```
+
+```{r demo, warning=FALSE, eval=FALSE, echo=TRUE}
+lm(y ~ x, data = dat)
+```
+
+## Review: Linear Model Example
+```{r cars,  warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+
+lm(dist ~ speed, data=cars) %>%
+  tidy()
+```
+
+```{r car_plot, warning=FALSE, echo=FALSE}
+library(ggplot2)
+ggplot(cars, aes(x = speed, y = dist)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red")
+```
+
+## But...
+What if we are trying to fit binary data or count data instead of continuous data?
+
+<iframe src="https://giphy.com/embed/l0NhZ0aUSE8fXag12" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><small><a href="https://giphy.com/gifs/omaze-chris-pratt-dinosaurs-l0NhZ0aUSE8fXag12">via GIPHY</a></small>
+
+## If we were to try to plot binary data...
+```{r ab_plot, warning=FALSE, echo=FALSE}
+ab_test <- read.csv("experiment.csv")
+library(ggplot2)
+ggplot(ab_test, aes(x = condition, y = clicked_button)) + 
+  geom_point()
+```
+
+
+## Generalized Linear Models (GLM)
+
+```{r glm_demo, warning=FALSE, eval=FALSE, echo=TRUE}
+glm(y ~ x, data = mydata, family = "binomial")
+```
+
+Family options:
+
+> - Poisson: Can be used for count data
+> - Binomial: Can be used for binary data
+> - Gaussian: Default for R. Same as an lm()
+
+## Logistic Regression
+
+> Type of advanced regression that uses model data with  <b>two</b> possible outcomes.
+
+Logistic regression models estimates the probability <em><b>p</b></em> of a binary outcome <em><b>y</b></em>.
+
+Since binary data are zeroes and ones, logistic regression uses a  function called <em><b>logit</b></em> to transform the binary data into real numbers (that fall on a spectrum from negative to positive infinity), so that you can create a linear equation.
+
+## Types of Acceptable Data
+<div style="float: left; max-width: 48%">
+<iframe src="https://giphy.com/embed/3og0Iwmv38WmJBrYvS" width="480" height="383" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><small><a href="https://giphy.com/gifs/fruit-cookies-cookie-monster-3og0Iwmv38WmJBrYvS">via GIPHY</a></small>
+</div>
+
+<div style="float: right; max-width: 48%">
+Acceptable data could be:
+
+> - Binary
+> - Behaviour-based inputs
+> - Result-based input 
+> - Choice-based input 
+</div>
+
+## Logistic Regression: Experimental Design
+<div style="float: left; width: 48%;">
+<img src="docs/control.jpg" alt="Shopify control version of website with purple Start free trial button" >
+<p>Control Version</p>
+</div>
+
+<div style="float: right; width: 48%;>
+<img src="docs/test.jpg" alt="Shopify control version of website with purple Start free trial button">
+<p>Test Version</p>
+</div>
+
+<b>Variables:</b>
+
+- Question: Will making  colour change to my website result in more button clicks?
+- Hypothesis: By changing the colour to 'green' it will result in more button clicks.
+
+> - Independent: Button Colour 
+> - Dependent: Whether or not the user clicked the button
+
+## Examine the Dataset
+```{r ab_test, warning=FALSE}
+ab_test <- read.csv("experiment.csv")
+head(ab_test)
+```
+
+<b>Variables:</b>
+
+> - x: condition 
+> - y: clicked_button
+
+## Run a Logistic Regression on the Data
+```{r lr, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+
+##glm(y ~ x, data=mydata, family="binomial" )
+
+glm(clicked_button ~ condition, 
+    data = ab_test, 
+    family = "binomial") %>%
+  tidy()
+```
+
+## Now It's Your Turn! Try This Example 
+
+You work for the City Transit Office. The Transit Office has been compiling data on commuters who use the bus as a means of transportation during the work week. The Transit Office has asked you to determine if the number of days an individual commutes, impacts whether or not they'll take the bus.
+
+1. Download the CSV file "transit.csv"
+2. Open the file in R. Take a look at the columns using the view() or head() functions.
+3. Answer the following questions:
+    - Which column is binary?
+    - What is our dependent variable?
+    - What is our independent variable?
